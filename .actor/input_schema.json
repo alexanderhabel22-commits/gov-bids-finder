@@ -262,10 +262,10 @@
             "default": true
         },
         "includeContacts": {
-            "title": "Include buyer contact",
+            "title": "Include named buyer contact",
             "type": "boolean",
-            "description": "The contracting officer or buyer listed on the notice (name, work email, work phone).",
-            "default": true
+            "description": "Off: only role mailboxes such as bids@ or purchasing@ are kept, and named people are left out. On: also the contracting officer or buyer named on the notice (name, work email, work phone).",
+            "default": false
         },
         "maxResults": {
             "title": "Maximum results",

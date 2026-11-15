@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { categoriesFor, CATEGORY_IDS, naicsForCategories } from '../src/categories.js';
 import { formatPhone, usDateToIso, htmlToText, truncate, daysUntil } from '../src/normalize.js';
-import { parseInput, matcher, BidDeduper, interleave, toOutputRow, rank, isNarrowed } from '../src/main.js';
+import { parseInput, matcher, BidDeduper, interleave, toOutputRow, rank, isNarrowed, scrubContact } from '../src/main.js';
 
 test('categories: titles, NAICS, NIGP and commodity text', () => {
     assert.deepEqual(categoriesFor({ title: 'Roof Replacement at Fire Station 3' }, ['roofing', 'construction']), ['roofing']);
@@ -83,4 +83,14 @@ test('interleave, output row and ranking', () => {
     assert.ok(!Object.keys(row).some((k) => k.startsWith('_')));
     const ranked = rank([{ title: 'old', posted_date: '2026-10-01' }, { title: 'none' }, { title: 'new', posted_date: '2026-11-01' }]);
     assert.deepEqual(ranked.map((r) => r.title), ['new', 'old', 'none']);
+});
+
+test('named contacts are dropped unless asked for', () => {
+    const off = parseInput({});
+    assert.equal(off.includeContacts, false);
+    const a = scrubContact({ contact_name: 'Pat Example', contact_email: 'pat.example@va.gov', contact_phone: '(555) 555-0100' }, off);
+    assert.deepEqual([a.contact_name, a.contact_email, a.contact_phone], [null, null, null]);
+    assert.equal(scrubContact({ contact_name: 'X', contact_email: 'purchasing@city.gov' }, off).contact_email, 'purchasing@city.gov');
+    const on = scrubContact({ contact_name: 'Pat Example', contact_email: 'pat.example@va.gov' }, parseInput({ includeContacts: true }));
+    assert.equal(on.contact_email, 'pat.example@va.gov');
 });

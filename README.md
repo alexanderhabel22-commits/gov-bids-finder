@@ -18,14 +18,14 @@ Most bid tools cover either SAM.gov or a paid state and local feed. This Actor p
 
 | title | government_level | buyer | state | response_deadline | days_left | set_aside | contact_email | url |
 |---|---|---|---|---|---|---|---|---|
-| Replace AHU and chiller, Bldg 28 | federal | Network Contracting Office 17 | TX | 2026-12-28T20:00:00Z | 43 | SDVOSB Set-Aside | buyer@agency.gov | sam.gov/opp/... |
+| Replace AHU and chiller, Bldg 28 | federal | Network Contracting Office 17 | TX | 2026-12-28T20:00:00Z | 43 | SDVOSB Set-Aside | contracting@agency.gov | sam.gov/opp/... |
 | Parking operations janitorial services | state | UT MD Anderson Cancer Center | TX | 2026-12-15T22:00:00Z | 30 | | | txsmartbuy.gov/esbd/... |
 | Malcolm X Park landscape maintenance | local | City of Boston | MA | 2026-12-03T19:00:00Z | 18 | | | commbuys.com/bso/... |
 
 *(Illustrative rows.)* Every row also has:
 
 - **What**: notice type, solicitation number, matched categories and keywords, NAICS codes, product/service code, NIGP or UNSPSC commodity codes, and the full description (up to 6,000 characters).
-- **Who**: agency, sub-agency, office and office city/state; the contact named on the notice (name, work email, work phone).
+- **Who**: agency, sub-agency, office and office city/state, plus the office's role mailbox (bids@, purchasing@) when the notice gives one. Optionally the buyer named on the notice.
 - **Where**: place of performance city, state and ZIP, and `location_basis` telling you whether the state comes from the place of performance, the buying office, or the state portal.
 - **When**: posted date, response deadline (ISO time, converted from the portal's time zone) and days left.
 - **Documents**: attachment names and direct download links (SAM.gov and Texas).
@@ -53,7 +53,7 @@ Each category maps to NAICS codes for federal bids and to title keywords and com
 - **Federal bids** and **state and local bids**: turn either source off.
 - **Federal notice types** and **set-asides** (small business, 8(a), HUBZone, SDVOSB, VOSB, WOSB, EDWOSB, Indian).
 - **Posted within (days)**: only new bids. Use 1 with a daily schedule, 7 with a weekly one.
-- **Only bids still open**, **open each bid for details**, **include buyer contact**, **maximum results**.
+- **Only bids still open**, **open each bid for details**, **include named buyer contact**, **maximum results**.
 
 ## Pricing
 
@@ -67,4 +67,4 @@ You pay per bid returned, plus a small fee per run. Set **maximum results** or a
 
 ## Data
 
-Only public notices that agencies publish for vendors. Nothing behind a login. Contacts are the government buyers named on each notice, as published; turn **Include buyer contact** off to leave them out.
+Only public notices that agencies publish for vendors. Nothing behind a login. By default no named people are returned, only role mailboxes; turn on **Include named buyer contact** to add the buyer named on each notice.

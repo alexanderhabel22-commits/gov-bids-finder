@@ -74,9 +74,20 @@ export function parseInput(raw = {}) {
         includeStateLocal,
         matchContractingOfficeState: raw.matchContractingOfficeState !== false,
         includeDetails: raw.includeDetails !== false,
-        includeContacts: raw.includeContacts !== false,
+        includeContacts: raw.includeContacts === true,
         maxResults: clampInt(raw.maxResults, 1000, 1, 50_000),
     };
+}
+
+const GENERIC_MAILBOX = /^(procurement|purchasing|purchases|bids?|bidding|contracts?|contracting|solicitations?|rfps?|acquisitions?|buyers?|info|admin|office|finance|business|vendors?|supply|supplies|materials|sourcing|ops|operations|help|support|questions|inquiries|general|main|clerk|cityclerk|townclerk)[a-z0-9._-]*@/i;
+
+/** Without the buyer-contact option, drop named people: keep only role mailboxes such as bids@ or purchasing@. */
+export function scrubContact(rec, input) {
+    if (input.includeContacts) return rec;
+    rec.contact_name = null;
+    rec.contact_phone = null;
+    if (rec.contact_email && !GENERIC_MAILBOX.test(rec.contact_email)) rec.contact_email = null;
+    return rec;
 }
 
 /** True when the input narrows by what is being bought (not just where). */
@@ -327,15 +338,14 @@ export async function collect(input, { log: logger = log, deadline = runDeadline
                         input.includeDetails ? fetchSamAttachments(rec.notice_id, { log: logger }).catch(() => []) : [],
                     ]);
                     const org = officeOf(rec._hit).agency ? null : await fetchSamOrg(detail?.data2?.organizationId, { log: logger });
-                    Object.assign(rec, mapSam(rec._hit, detail, attachments, scrapedAt, { ...input, org }), { _why: rec._why });
+                    Object.assign(rec, mapSam(rec._hit, detail, attachments, scrapedAt, { org }), { _why: rec._why });
                 } else if (rec.source === TEXAS_SOURCE) {
                     const d = await fetchTexasDetail(rec, { log: logger });
                     rec.description = d.description;
                     rec.attachments = d.attachments;
-                    if (input.includeContacts) Object.assign(rec, { contact_name: d.contact_name, contact_email: d.contact_email, contact_phone: d.contact_phone });
+                    Object.assign(rec, { contact_name: d.contact_name, contact_email: d.contact_email, contact_phone: d.contact_phone });
                 } else {
                     applyPeriscopeDetail(rec, await fetchPeriscopeDetail(rec._portal, rec, { log: logger }), rec._portal);
-                    if (!input.includeContacts) Object.assign(rec, { contact_name: null, contact_email: null, contact_phone: null });
                 }
                 rec._detailed = true;
                 stats.details.ok++;
@@ -354,12 +364,13 @@ export async function collect(input, { log: logger = log, deadline = runDeadline
         if (!isOpen(rec) || !postedOk(rec)) continue;
         const m = match(rec);
         if (!m.ok) continue;
+        scrubContact(rec, input);
         rec.matched_categories = m.matched_categories;
         rec.matched_keywords = m.matched_keywords;
         stats[rec.source].matched++;
         deduper.add(rec);
     }
-    return { rows: rank(deduper.rows.map((r) => toOutputRow(r, now))), stats, candidates: candidates.length };
+    return { rows: rank(deduper.rows.map((r) => toOutputRow(scrubContact(r, input), now))), stats, candidates: candidates.length };
 }
 
 async function run() {
