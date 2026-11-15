@@ -1,0 +1,124 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "overview": {
+            "title": "Bids",
+            "transformation": {
+                "fields": [
+                    "title",
+                    "government_level",
+                    "buyer",
+                    "state",
+                    "response_deadline",
+                    "days_left",
+                    "notice_type",
+                    "matched_categories",
+                    "set_aside",
+                    "contact_email",
+                    "url"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "title": {
+                        "label": "Bid",
+                        "format": "text"
+                    },
+                    "government_level": {
+                        "label": "Level",
+                        "format": "text"
+                    },
+                    "buyer": {
+                        "label": "Buyer",
+                        "format": "text"
+                    },
+                    "state": {
+                        "label": "State",
+                        "format": "text"
+                    },
+                    "response_deadline": {
+                        "label": "Due",
+                        "format": "date"
+                    },
+                    "days_left": {
+                        "label": "Days left",
+                        "format": "number"
+                    },
+                    "notice_type": {
+                        "label": "Type",
+                        "format": "text"
+                    },
+                    "matched_categories": {
+                        "label": "Categories",
+                        "format": "array"
+                    },
+                    "set_aside": {
+                        "label": "Set-aside",
+                        "format": "text"
+                    },
+                    "contact_email": {
+                        "label": "Contact email",
+                        "format": "text"
+                    },
+                    "url": {
+                        "label": "Link",
+                        "format": "link"
+                    }
+                }
+            }
+        },
+        "full": {
+            "title": "Full details",
+            "transformation": {
+                "fields": [
+                    "title",
+                    "government_level",
+                    "buyer",
+                    "state",
+                    "notice_type",
+                    "response_deadline",
+                    "days_left",
+                    "posted_date",
+                    "matched_categories",
+                    "matched_keywords",
+                    "set_aside",
+                    "naics_codes",
+                    "product_service_code",
+                    "commodity_codes",
+                    "solicitation_number",
+                    "description",
+                    "contact_name",
+                    "contact_email",
+                    "contact_phone",
+                    "agency",
+                    "sub_agency",
+                    "office",
+                    "office_city",
+                    "office_state",
+                    "place_of_performance_city",
+                    "place_of_performance_zip",
+                    "location_basis",
+                    "attachments",
+                    "award_amount",
+                    "award_date",
+                    "awardee_name",
+                    "awardee_uei",
+                    "status",
+                    "url",
+                    "external_url",
+                    "source",
+                    "source_name",
+                    "notice_id",
+                    "related_notice_ids",
+                    "last_updated",
+                    "scraped_at"
+                ]
+            },
+            "display": {
+                "component": "table"
+            }
+        }
+    }
+}

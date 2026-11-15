@@ -1,0 +1,84 @@
+{
+ "isCanceled": false,
+ "_rScore": 0,
+ "_type": "opportunity",
+ "publishDate": "2026-11-13T13:23:40+00:00",
+ "isActive": true,
+ "title": "Gutter Maintenance",
+ "type": {
+  "code": "r",
+  "value": "Sources Sought"
+ },
+ "descriptions": [
+  {
+   "lastModifiedDate": "2026-11-13T13:23:40.667+00:00",
+   "content": "<p>Roof drainage (gutter) maintenance</p>\n"
+  }
+ ],
+ "solicitationNumber": "36C26027Q0122",
+ "responseDate": "2026-11-20T15:00:00+00:00",
+ "parentNoticeId": null,
+ "award": {
+  "awardee": {
+   "ueiSAM": null,
+   "name": null
+  }
+ },
+ "responseTimeZone": "America/New_York",
+ "modifiedDate": "2026-11-13T13:23:40+00:00",
+ "organizationHierarchy": [
+  {
+   "organizationId": "100006568",
+   "code": "3600",
+   "address": {
+    "zip": null,
+    "country": "US",
+    "city": null,
+    "streetAddress": null,
+    "streetAddress2": null,
+    "state": null
+   },
+   "level": 1,
+   "name": "VETERANS AFFAIRS, DEPARTMENT OF",
+   "type": "DEPARTMENT",
+   "status": "active"
+  },
+  {
+   "organizationId": "300000214",
+   "code": "3600",
+   "address": {
+    "zip": null,
+    "country": null,
+    "city": null,
+    "streetAddress": null,
+    "streetAddress2": null,
+    "state": null
+   },
+   "level": 2,
+   "name": "VETERANS AFFAIRS, DEPARTMENT OF",
+   "type": "AGENCY",
+   "status": "active"
+  },
+  {
+   "organizationId": "100186526",
+   "code": "36C260",
+   "address": {
+    "zip": "98662",
+    "country": "USA",
+    "city": "VANCOUVER",
+    "streetAddress": "5115NE 82ND AVE",
+    "streetAddress2": "SUITE 102",
+    "state": "WA"
+   },
+   "level": 3,
+   "name": "260-NETWORK CONTRACT OFFICE 20 (36C260)",
+   "type": "OFFICE",
+   "status": "active"
+  }
+ ],
+ "_id": "f151911bb4d6459eb12d3c0e9b18f0d3",
+ "responseDateActual": "2026-11-20T10:00:00-05:00",
+ "modifications": {
+  "count": 0
+ }
+}

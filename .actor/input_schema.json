@@ -1,0 +1,280 @@
+{
+    "title": "Find open US government bids and RFPs",
+    "description": "Pick what you sell and where. The Actor searches SAM.gov for federal opportunities and state procurement portals for state, city, county and school district bids, keeps the open ones that match, and returns one list with deadline, buyer, contact, description and attachment links.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "categories": {
+            "title": "What you sell",
+            "type": "array",
+            "description": "Bid categories. A bid needs any one of them. Federal bids are matched by NAICS code; state and local bids by title, commodity codes and description. Leave empty and add keywords or NAICS codes instead, or leave everything empty to get every open bid in your states.",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "construction",
+                    "roofing",
+                    "hvac",
+                    "plumbing",
+                    "electrical",
+                    "roads_bridges",
+                    "water_utilities",
+                    "painting_flooring",
+                    "janitorial",
+                    "grounds",
+                    "facilities",
+                    "security",
+                    "it_software",
+                    "telecom",
+                    "engineering",
+                    "consulting",
+                    "marketing_printing",
+                    "staffing",
+                    "medical",
+                    "vehicles_fleet",
+                    "transportation",
+                    "environmental_waste",
+                    "food",
+                    "furniture_supplies",
+                    "metal_manufacturing",
+                    "energy_solar"
+                ],
+                "enumTitles": [
+                    "Construction, renovation & building repair",
+                    "Roofing",
+                    "HVAC, mechanical & boilers",
+                    "Plumbing",
+                    "Electrical, lighting & generators",
+                    "Roads, bridges, paving & site work",
+                    "Water, wastewater & utilities",
+                    "Painting, flooring & finishes",
+                    "Janitorial & custodial",
+                    "Landscaping, mowing & tree work",
+                    "Facility maintenance & building services",
+                    "Security guards, alarms & surveillance",
+                    "IT, software & cybersecurity",
+                    "Telecom, radio & cabling",
+                    "Engineering, architecture & surveying",
+                    "Consulting, training & professional services",
+                    "Marketing, printing & media",
+                    "Staffing & temporary labor",
+                    "Medical, dental & lab supplies and services",
+                    "Vehicles, fleet & heavy equipment",
+                    "Transportation, freight & moving",
+                    "Waste, recycling & environmental remediation",
+                    "Food, catering & food service",
+                    "Furniture, office & janitorial supplies",
+                    "Metal fabrication, machining & manufactured parts",
+                    "Energy, solar & fuel"
+                ]
+            },
+            "prefill": [
+                "construction"
+            ],
+            "default": [
+                "construction"
+            ]
+        },
+        "keywords": {
+            "title": "Keywords",
+            "type": "array",
+            "description": "Extra words or phrases to look for in the title and description, such as \"snow removal\" or \"body cameras\". A bid that matches any keyword or any category is kept.",
+            "editor": "stringList",
+            "default": []
+        },
+        "naicsCodes": {
+            "title": "NAICS codes (federal)",
+            "type": "array",
+            "description": "2 to 6 digit NAICS codes or prefixes, such as 238220 or 5415. Used for SAM.gov searches.",
+            "editor": "stringList",
+            "default": []
+        },
+        "states": {
+            "title": "States",
+            "type": "array",
+            "description": "Two-letter state codes. Federal bids are kept when the work is in these states, or when no place of performance is given and the buying office is there. State portals are searched for the states listed that have one (TX, MA, IL, NJ, OR, NV). Leave empty for the whole US.",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "AL",
+                    "AK",
+                    "AZ",
+                    "AR",
+                    "CA",
+                    "CO",
+                    "CT",
+                    "DE",
+                    "DC",
+                    "FL",
+                    "GA",
+                    "HI",
+                    "ID",
+                    "IL",
+                    "IN",
+                    "IA",
+                    "KS",
+                    "KY",
+                    "LA",
+                    "ME",
+                    "MD",
+                    "MA",
+                    "MI",
+                    "MN",
+                    "MS",
+                    "MO",
+                    "MT",
+                    "NE",
+                    "NV",
+                    "NH",
+                    "NJ",
+                    "NM",
+                    "NY",
+                    "NC",
+                    "ND",
+                    "OH",
+                    "OK",
+                    "OR",
+                    "PA",
+                    "RI",
+                    "SC",
+                    "SD",
+                    "TN",
+                    "TX",
+                    "UT",
+                    "VT",
+                    "VA",
+                    "WA",
+                    "WV",
+                    "WI",
+                    "WY",
+                    "PR",
+                    "GU",
+                    "VI"
+                ]
+            },
+            "prefill": [
+                "TX"
+            ],
+            "default": []
+        },
+        "includeFederal": {
+            "title": "Federal bids (SAM.gov)",
+            "type": "boolean",
+            "description": "Search SAM.gov contract opportunities.",
+            "default": true
+        },
+        "includeStateLocal": {
+            "title": "State and local bids",
+            "type": "boolean",
+            "description": "Search state procurement portals: Texas ESBD, COMMBUYS (MA), BidBuy (IL), NJSTART (NJ), OregonBuys (OR) and Nevada ePro (NV). These also carry many city, county, school district and authority bids.",
+            "default": true
+        },
+        "noticeTypes": {
+            "title": "Federal notice types",
+            "type": "array",
+            "description": "Which SAM.gov notice types to include.",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "solicitation",
+                    "combined_synopsis",
+                    "presolicitation",
+                    "sources_sought",
+                    "special_notice",
+                    "award",
+                    "intent_to_bundle",
+                    "justification"
+                ],
+                "enumTitles": [
+                    "Solicitation",
+                    "Combined synopsis/solicitation",
+                    "Presolicitation",
+                    "Sources sought / RFI",
+                    "Special notice",
+                    "Award notice",
+                    "Intent to bundle",
+                    "Justification (sole source)"
+                ]
+            },
+            "default": [
+                "solicitation",
+                "combined_synopsis",
+                "presolicitation",
+                "sources_sought"
+            ]
+        },
+        "setAsides": {
+            "title": "Federal set-asides",
+            "type": "array",
+            "description": "Only federal bids set aside for these business types. Leave empty for all.",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "small_business",
+                    "8a",
+                    "hubzone",
+                    "sdvosb",
+                    "vosb",
+                    "wosb",
+                    "edwosb",
+                    "indian_economic"
+                ],
+                "enumTitles": [
+                    "Small business (total or partial)",
+                    "8(a)",
+                    "HUBZone",
+                    "Service-disabled veteran-owned (SDVOSB)",
+                    "Veteran-owned (VA VOSB)",
+                    "Women-owned (WOSB)",
+                    "Economically disadvantaged women-owned (EDWOSB)",
+                    "Indian / Buy Indian"
+                ]
+            },
+            "default": []
+        },
+        "postedWithinDays": {
+            "title": "Posted within (days)",
+            "type": "integer",
+            "description": "Only bids posted in the last N days. 0 means any open bid. Use 1 or 7 with a daily or weekly schedule to get only new bids.",
+            "minimum": 0,
+            "maximum": 3650,
+            "default": 0
+        },
+        "onlyOpen": {
+            "title": "Only bids still open",
+            "type": "boolean",
+            "description": "Drop bids whose response deadline has passed.",
+            "default": true
+        },
+        "matchContractingOfficeState": {
+            "title": "Also use the buying office's state",
+            "type": "boolean",
+            "description": "Many federal notices give no place of performance. When on, such notices count for a state if the contracting office is there (shown as location_basis = contracting_office).",
+            "default": true
+        },
+        "includeDetails": {
+            "title": "Open each bid for details",
+            "type": "boolean",
+            "description": "Fetch each bid's description, contact and attachment links. Turn off for a faster, shorter list (federal bids are always opened, because their NAICS code is only on the full notice).",
+            "default": true
+        },
+        "includeContacts": {
+            "title": "Include buyer contact",
+            "type": "boolean",
+            "description": "The contracting officer or buyer listed on the notice (name, work email, work phone).",
+            "default": true
+        },
+        "maxResults": {
+            "title": "Maximum results",
+            "type": "integer",
+            "description": "Stop after this many bids. You pay per bid returned.",
+            "minimum": 1,
+            "maximum": 50000,
+            "default": 1000
+        }
+    },
+    "required": []
+}

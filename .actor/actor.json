@@ -1,0 +1,19 @@
+{
+    "actorSpecification": 1,
+    "name": "government-bids-rfp-finder",
+    "title": "US Government Bids & RFPs: SAM.gov + State & Local",
+    "description": "Open federal, state and local government bids and RFPs in one list. SAM.gov plus state portals (Texas, Massachusetts, Illinois, New Jersey, Oregon, Nevada). Filter by category, keyword, NAICS, state and set-aside. Deadline, contact, description and attachments.",
+    "version": "0.1",
+    "buildTag": "latest",
+    "input": "./input_schema.json",
+    "output": "./output_schema.json",
+    "dockerfile": "./Dockerfile",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
+    "defaultRunOptions": {
+        "build": "latest",
+        "timeoutSecs": 3600,
+        "memoryMbytes": 1024
+    }
+}
