@@ -55,10 +55,6 @@ Each category maps to NAICS codes for federal bids and to title keywords and com
 - **Posted within (days)**: only new bids. Use 1 with a daily schedule, 7 with a weekly one.
 - **Only bids still open**, **open each bid for details**, **include named buyer contact**, **maximum results**.
 
-## Pricing
-
-You pay per bid returned, plus a small fee per run. Set **maximum results** or a spending limit and the run stops there.
-
 ## Tips
 
 - Schedule it daily with "posted within 1 day" and connect the dataset to email, Slack, Google Sheets or Zapier for a free bid alert.
@@ -68,3 +64,41 @@ You pay per bid returned, plus a small fee per run. Set **maximum results** or a
 ## Data
 
 Only public notices that agencies publish for vendors. Nothing behind a login. By default no named people are returned, only role mailboxes; turn on **Include named buyer contact** to add the buyer named on each notice.
+
+## How much does it cost?
+
+**$4 per 1,000 bids** ($0.004 each), plus $0.005 per run. You pay only for bids returned.
+
+| You get | You pay |
+|---|---|
+| 100 bids | about $0.41 |
+| 1,000 bids | about $4.01 |
+| 5,000 bids | about $20.01 |
+
+Apify's free plan includes $5 of credit every month, which covers about 1,200 bids, so you can try it without paying anything. Set **Maximum results** or a spending limit and the run stops there.
+
+## FAQ
+
+**Is this a SAM.gov scraper?** Yes, and more: it reads every active SAM.gov opportunity plus state portals (Texas ESBD, COMMBUYS, BidBuy, NJSTART, OregonBuys, Nevada ePro) that carry city, county and school bids.
+
+**Can I get daily bid alerts by email or Slack?** Yes. Schedule the Actor daily with Posted within = 1 day and connect it to email, Slack or Google Sheets. That replaces a $100+/month bid service.
+
+**Can I search by NAICS code or set-aside?** Yes. Enter NAICS codes and pick set-asides such as 8(a), HUBZone, SDVOSB or WOSB.
+
+**Do I need a SAM.gov API key?** No. You don't need any account or key.
+
+**How is this different from GovSpend, BidNet or GovWin?** Those are annual subscriptions. This gives you the open bids for your categories and states as a spreadsheet, and you pay only for the bids returned.
+
+## Use it from your own tools
+
+Run it from the Apify API (see the API tab), on a schedule, or from Zapier, Make, n8n, Google Sheets and Slack integrations. Each run's results stay in a dataset you can download as CSV, Excel, JSON or XML.
+
+## More B2B lead lists from the same developer
+
+Same pricing, same clean one-row-per-company format:
+
+- [US Manufacturer & Machine Shop Leads](https://apify.com/habes22/fabricator-finder): metal fabricators and machine shops by capability (laser, CNC, welding)
+- [Construction Contractor & Subcontractor Finder](https://apify.com/habes22/construction-contractor-finder): commercial contractors and subs by trade
+- [Trucking Company & Carrier Leads (FMCSA)](https://apify.com/habes22/trucking-carrier-finder): trucking companies by cargo, fleet size and area, with safety data
+- [Medical Practice & Clinic Leads (NPI)](https://apify.com/habes22/medical-practice-leads): dental, medical and therapy practices by specialty
+- [Commercial Property Owner Leads](https://apify.com/habes22/commercial-property-owner-leads): who owns offices, warehouses and other commercial buildings
