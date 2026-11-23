@@ -16,13 +16,17 @@ Most bid tools cover either SAM.gov or a paid state and local feed. This Actor p
 
 ## What you get
 
-| title | government_level | buyer | state | response_deadline | days_left | set_aside | contact_email | url |
-|---|---|---|---|---|---|---|---|---|
-| Replace AHU and chiller, Bldg 28 | federal | Network Contracting Office 17 | TX | 2026-12-28T20:00:00Z | 43 | SDVOSB Set-Aside | contracting@agency.gov | sam.gov/opp/... |
-| Parking operations janitorial services | state | UT MD Anderson Cancer Center | TX | 2026-12-15T22:00:00Z | 30 | | | txsmartbuy.gov/esbd/... |
-| Malcolm X Park landscape maintenance | local | City of Boston | MA | 2026-12-03T19:00:00Z | 18 | | | commbuys.com/bso/... |
+The input form comes pre-filled with **construction bids in Texas, 100 results**. Click Start and you get this kind of list in under a minute, for about $0.41. These rows are from a test run on November 23, 2026, mixing federal, state and local buyers:
 
-*(Illustrative rows.)* Every row also has:
+| Bid | Level | Buyer | Deadline | Set-aside |
+|---|---|---|---|---|
+| Fort Hood Replacement JOC | federal | W076 ENDIST FT WORTH | 2026-12-07 | 8(a) Set-Aside |
+| Flooring Replacement Services CTXVA | federal | 257-NETWORK CONTRACT OFFICE 17 (36C257) | 2026-11-25 | Service-Disabled Veteran-Owned Small Business Set-Aside |
+| Gatesville ISD - Gatesville Intermediate Roof Repair RE-BID | local | Gatesville ISD | 2026-12-07 | |
+| Texas Central Parkway Drainage Improvements | local | City of Waco | 2027-01-12 | |
+| Restroom Renovation at Presidio La Bahia State Historic Site | state | Texas Historical Commission | 2026-12-01 | |
+
+Every row also has:
 
 - **What**: notice type, solicitation number, matched categories and keywords, NAICS codes, product/service code, NIGP or UNSPSC commodity codes, and the full description (up to 6,000 characters).
 - **Who**: agency, sub-agency, office and office city/state, plus the office's role mailbox (bids@, purchasing@) when the notice gives one. Optionally the buyer named on the notice.
@@ -102,3 +106,4 @@ Same pricing, same clean one-row-per-company format:
 - [Trucking Company & Carrier Leads (FMCSA)](https://apify.com/habes22/trucking-carrier-finder): trucking companies by cargo, fleet size and area, with safety data
 - [Medical Practice & Clinic Leads (NPI)](https://apify.com/habes22/medical-practice-leads): dental, medical and therapy practices by specialty
 - [Commercial Property Owner Leads](https://apify.com/habes22/commercial-property-owner-leads): who owns offices, warehouses and other commercial buildings
+- [Solar & Battery Installer Leads](https://apify.com/habes22/solar-installer-leads): US solar installers ranked by how many systems they really installed
